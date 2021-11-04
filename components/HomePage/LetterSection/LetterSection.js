@@ -4,13 +4,50 @@ import {
   Photo,
   Video,
 } from "./LetterSectionStyles";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+
+const letterVariants = {
+  out: {
+    opacity: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.7,
+    },
+  },
+  in: {
+    opacity: 1,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.7,
+    },
+  },
+};
+
+const photoVariants = { ...letterVariants };
 
 const LetterSection = () => {
   const photo = "/assets/images/photo (6).jpeg";
 
+  const [letterRef, letterInView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  const [photoRef, photoInView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
   return (
     <LetterSectionComponent>
-      <Letter>
+      <Letter
+        as={motion.div}
+        initial={letterInView ? "in" : "out"}
+        animate={letterInView ? "in" : "out"}
+        variants={letterVariants}
+        ref={letterRef}
+      >
         <p>
           ¡Ay, Chiquita! Los últimos meses han sido de mucha alegría, estoy muy
           feliz de poder disfrutar esta etapa de noviazgo a tu lado, cada
@@ -37,6 +74,11 @@ const LetterSection = () => {
         <p>Julio</p>
       </Letter>
       <Photo
+        as={motion.div}
+        initial={photoInView ? "in" : "out"}
+        animate={photoInView ? "in" : "out"}
+        variants={photoVariants}
+        ref={photoRef}
         style={{
           backgroundImage: `url("${photo}")`,
         }}

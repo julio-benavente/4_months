@@ -19,6 +19,7 @@ export const Photo = styled.div`
   background-position: center;
   background-size: cover;
   grid-row: auto / span 2;
+  background-repeat: no-repeat;
 
   &:nth-child(1) {
     grid-column: 1/-1;
@@ -38,7 +39,7 @@ export const Photo = styled.div`
   }
   &:nth-child(5) {
     grid-column: 1/4;
-    background-position: center -100px;
+    background-position: center clamp(0px, 3vw, -100px);
   }
   &:nth-child(7) {
     grid-column: 1/3;

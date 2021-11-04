@@ -37,17 +37,16 @@ const photoVariants = {
     opacity: 0,
     transition: {
       ease: "easeInOut",
-      duration: 1,
+      duration: 0.7,
     },
   },
   in: {
     opacity: 1,
     transition: {
       ease: "easeInOut",
-      duration: 1,
+      duration: 0.7,
     },
   },
-  exit: { opacity: 0 },
 };
 
 const PhotosComponent = ({ url }) => {
@@ -62,7 +61,6 @@ const PhotosComponent = ({ url }) => {
       as={motion.div}
       initial={inView ? "in" : "out"}
       animate={inView ? "in" : "out"}
-      exit="exit"
       variants={photoVariants}
       ref={ref}
       style={{

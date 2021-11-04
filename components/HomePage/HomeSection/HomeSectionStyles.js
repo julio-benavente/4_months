@@ -19,7 +19,8 @@ export const Message = styled.div`
 `;
 
 export const Image = styled.div`
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
   height: 250px;
   background-position: center;
   background-size: contain;

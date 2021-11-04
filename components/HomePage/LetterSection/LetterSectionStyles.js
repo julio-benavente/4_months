@@ -17,6 +17,7 @@ export const LetterSectionComponent = styled.div`
 
 export const Letter = styled.div`
   max-width: 400px;
+  padding: 0 10px;
   p {
     font-size: 1.1rem;
     margin-bottom: 10px;
